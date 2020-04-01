@@ -133,4 +133,13 @@ class MyLinkedListTestNew {
         System.out.println("After Remove");
         myLinkedList.printList();
     }
+
+    @Test
+    void indexOf() {
+        myLinkedList.addFirst(9);
+        myLinkedList.addFirst(8);
+        myLinkedList.addFirst(7);
+        myLinkedList.printList();
+        assertEquals(2,myLinkedList.indexOf(9));
+    }
 }

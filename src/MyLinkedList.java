@@ -149,6 +149,12 @@ public class MyLinkedList {
 
     public int indexOf(Object data) {
         Node current = head;
-        throw new UnsupportedOperationException();
+        for (int index = 0; index < numNodes; index++) {
+            if (current.getData() == data) {
+                return index;
+            }
+            current = current.next;
+        }
+        return -1;
     }
 }
