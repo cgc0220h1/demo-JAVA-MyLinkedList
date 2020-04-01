@@ -123,15 +123,9 @@ public class MyLinkedList {
     }
 
     public boolean removeObject(Object data) {
-        if (isContains(data)) {
-            Node current = head;
-            for (int index = 0; index < numNodes; index++) {
-                if (current.getData() == data) {
-                    remove(index);
-                    return true;
-                }
-                current = current.next;
-            }
+        if (indexOf(data) != -1) {
+            remove(indexOf(data));
+            return true;
         }
         return false;
     }
