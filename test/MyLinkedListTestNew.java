@@ -142,4 +142,22 @@ class MyLinkedListTestNew {
         myLinkedList.printList();
         assertEquals(2,myLinkedList.indexOf(9));
     }
+
+    @Test
+    void cloneList() {
+        myLinkedList.addFirst(9);
+        myLinkedList.addFirst(8);
+        myLinkedList.addFirst(7);
+        int expectedSize = myLinkedList.getNumNodes();
+        System.out.println("Original: ");
+        myLinkedList.printList();
+        MyLinkedList cloneList;
+        cloneList = (MyLinkedList) myLinkedList.clone();
+        System.out.println("Clone: ");
+        cloneList.printList();
+        assertEquals(expectedSize,cloneList.getNumNodes());
+        for (int index = 0; index < cloneList.getNumNodes(); index++) {
+            assertEquals(myLinkedList.get(index).getData(),cloneList.get(index).getData());
+        }
+    }
 }

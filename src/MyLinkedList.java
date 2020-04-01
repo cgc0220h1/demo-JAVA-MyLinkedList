@@ -6,7 +6,11 @@ public class MyLinkedList {
     public MyLinkedList(Object data) {
         head = new Node(data);
         tail = head;
+        tail.next = null;
         numNodes++;
+    }
+
+    public MyLinkedList() {
     }
 
     public int getNumNodes() {
@@ -24,7 +28,6 @@ public class MyLinkedList {
     public static class Node {
         private Node next;
         private Object data;
-        private int index;
 
         public Node(Object data) {
             this.data = data;
@@ -80,18 +83,18 @@ public class MyLinkedList {
     }
 
     public Node get(int index) {
-        Node temp = head;
-        for (int i = 0; i < index; i++) {
-            temp = temp.next;
+        Node current = head;
+        for (int indexNode = 0; indexNode < index; indexNode++) {
+            current = current.next;
         }
-        return temp;
+        return current;
     }
 
     public void printList() {
-        Node temp = head;
-        while (temp != null) {
-            System.out.println(temp.data);
-            temp = temp.next;
+        Node current = head;
+        while (current != null) {
+            System.out.println(current.data);
+            current = current.next;
         }
     }
 
@@ -150,5 +153,16 @@ public class MyLinkedList {
             current = current.next;
         }
         return -1;
+    }
+
+    public Object clone() {
+        MyLinkedList cloneList = new MyLinkedList();
+        cloneList.head = head;
+        cloneList.tail = tail;
+        cloneList.numNodes += 2;
+        for (int index = 1; index < numNodes - 1; index++) {
+            cloneList.addLast(get(index).getData());
+        }
+        return cloneList;
     }
 }
